@@ -1,0 +1,267 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  font-size: 16px;
+  background: #757575;
+  font-family: "Roboto", sans-serif;
+}
+body {
+  text-align: center;
+}
+#todo-wrapper {
+  position: relative;
+  padding: 4vh 3vw;
+  max-width: 600px;
+  margin: 0 auto;
+  color: black;
+  box-shadow: 3px 3px 10px #cccccc, -3px -3px 10px #ccc;
+  background: linear-gradient(to right, #b2ebf2, #fff9c4);
+}
+/* header {
+  display: flex;
+  justify-content: space-between;
+  flex: 0 0 600px;
+} */
+/* header > form[action="/logout"] {
+  flex: 1 6 20%;
+} */
+header {
+  display: grid;
+  grid-template-areas: "a ... b" 
+                       "c ... .";
+}
+header > form[action="/logout"] {
+  grid-area: c;  
+  margin-top: 5vh;
+}
+header > form[action="/logout"] > button[type="submit"] {
+    float: left;
+    cursor: pointer;
+    font-family: "Roboto", sans-serif;
+    font-size: 1.1rem;
+    background: #546e7a;
+    color: white;
+    padding: .6rem;
+    -webkit-border-radius: 60px;
+    -moz-border-radius: 60px;
+    border-radius: 60px; 
+    border-style: none;
+}
+
+header > i.material-icons {
+  font-size: 2.5rem;
+  cursor: pointer;
+  grid-area: b;
+  height: 40px;
+}
+
+header > h1 {
+  grid-area: a;
+  position: relative;
+  text-align: left;
+  display: inline-block;
+  font-size: 2rem;
+  /* font-family: "Roboto", sans-serif; */
+  font-weight: 300;
+  margin: 0;
+  letter-spacing: 0.09vw;
+  animation: slideHeader 1s ease;
+}
+
+@keyframes slideHeader {
+  from {
+    left: -100px;
+    opacity: 0;
+  }
+  to {
+    left: 0;
+    opacity: 1;
+  }
+}
+
+.spin {
+  animation: spin 1s ease forwards;
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(405deg);
+  }
+}
+
+.despin {
+  animation: despin 1s ease forwards;
+}
+@keyframes despin {
+  from {
+    transform: rotate(405deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+form[action="/"] {
+  margin: 10vh auto 5vh auto;
+  max-width: 600px;
+  box-sizing: border-box;
+}
+form[action="/"] > input {
+  display: block;
+  margin: 0 auto;
+  font-size: 1.5rem;
+  padding: 2.5vh 2vw;
+}
+.slideInput {
+  animation: slideInput 1s ease-out forwards;
+}
+@keyframes slideInput {
+  from {
+    opacity: 1;
+    max-height: 28px;
+    padding: 2.5vh 2vw;
+  }
+  to {
+    opacity: 0;
+    max-height: 0;
+    padding: 0;
+  }
+}
+.slideInputReverse {
+  animation: slideInputReverse 1s ease-out forwards;
+}
+@keyframes slideInputReverse {
+  from {
+    opacity: 0;
+    max-height: 0;
+    padding: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 28px;
+    padding: 2.5vh 2vw;
+  }
+}
+.slideForm {
+  animation: slideForm 1s ease-out forwards;
+}
+@keyframes slideForm {
+  from {
+    opacity: 1;
+    max-height: 54.54px;
+    margin: 10vh auto 5vh auto;
+  }
+  to {
+    opacity: 0;
+    max-height: 0px;
+    margin: 2vh auto;
+  }
+}
+.slideFormReverse {
+  animation: slideFormReverse 1s ease-out forwards;
+}
+@keyframes slideFormReverse {
+  from {
+    opacity: 0;
+    max-height: 0px;
+    margin: 2vh auto;
+  }
+  to {
+    opacity: 1;
+    max-height: 54.54px;
+    margin: 10vh auto 5vh auto;
+  }
+}
+
+.slideTodos {
+  animation: slideTodos 0.8s ease-in forwards;
+}
+
+@keyframes slideTodos {
+  from {
+    top: 50px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+ul li {
+  position: relative;
+  display: grid;
+  grid-template-areas: "a b . . . . t . . . . c";
+  align-items: center;
+  grid-auto-rows: 10vh;
+  margin: 2vh auto;
+  width: 100%;
+  padding-right: 1vw;
+}
+.slideTodos > form > button {
+  border: none;
+  outline: none;
+  background: transparent;
+}
+.slideTodos > form:nth-child(1) > {
+  grid-area: a;
+  font-size: 1.5rem;
+}
+/*
+ul > li > i.material-icons:nth-of-type(1) {
+  grid-area: a;
+  font-size: 1.5rem;
+}
+*/
+.slideTodos > form:nth-child(2) {
+  grid-area: b;
+  font-size: 1.5rem;
+  padding: 0 0.5rem 0 0.8rem;
+}
+/*
+ul > li > i.material-icons:nth-of-type(2) {
+  grid-area: b;
+  font-size: 1.5rem;
+  padding: 0 0.5rem 0 0.8rem;
+}
+*/
+
+ul > li > p {
+  grid-area: t;
+  display: inline-block;
+  font-size: 1.2rem;
+  width: 252px;
+}
+
+.slideTodos > form:nth-child(4) {
+  grid-area: c;
+  font-size: 1.5rem;
+  padding-right: 0.2rem;
+  position: relative;
+  right: 1vw;
+}
+
+.important {
+  background: #e57373;
+  color: white;
+}
+.done {
+  background: #9ccc65;
+  text-decoration: line-through;
+}
+/*
+ul > li > i.material-icons:nth-of-type(3) {
+  grid-area: c;
+  font-size: 1.5rem;
+  padding-right: 0.2rem;
+}
+*/

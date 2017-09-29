@@ -1,0 +1,9 @@
+@media screen and (max-width: 600px) {
+    form input {
+        padding: 2vh 0 2vh 2vw;  
+        width: 100%;      
+    }
+    .slideTodos > p:nth-child(3) {
+        max-width: 150px;
+    }
+}

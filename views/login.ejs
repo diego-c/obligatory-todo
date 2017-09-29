@@ -1,0 +1,17 @@
+<%- include('./boilerplate/header') %>
+    <h1>Login</h1>
+    <form action="/login" method="POST">
+        <div id="username">
+            <label for="username">Username:</label>
+            <input type="text" maxlength="20" required name="username">
+        </div>
+        <div id="password">
+            <label for="password">Password:</label>
+            <input type="password" maxlength="80" minlength="6" required name="password">
+        </div>
+        <button type="submit">Login</button>
+    </form>
+    <form action="/register">
+        <button type="submit">Register</button>
+    </form>
+    <%- include('./boilerplate/footer') %>

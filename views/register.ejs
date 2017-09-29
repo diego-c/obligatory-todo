@@ -1,0 +1,21 @@
+<%- include('boilerplate/header') %>
+    <h1>Register</h1>
+    <form action="/register" method="POST">
+        <div id="email">
+            <label for="email">E-mail:</label>
+            <input type="email" maxlength="80" required name="email">
+        </div>
+        <div id="username">
+            <label for="username">Username:</label>
+            <input type="text" maxlength="20" required name="username">
+        </div>
+        <div id="password">
+            <label for="password">Password:</label>
+            <input type="password" maxlength="80" minlength="6" required name="password">
+        </div>
+        <button type="submit">Register</button>
+    </form>
+    <form action="/login">
+        <button type="submit">Login</button>
+    </form>
+    <%- include('boilerplate/footer') %>

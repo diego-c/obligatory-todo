@@ -1,0 +1,39 @@
+<%- include('boilerplate/header') %>
+    <div id="todo-wrapper">
+        <header>
+            <h1>Welcome, <%=username%>!</h1><i class="material-icons">add</i>
+            <form action="/logout">
+                <button type="submit">Logout</button>
+            </form>
+        </header>
+        <form action="/" method="POST">
+            <input name="todo" type="text" placeholder="Add todo...">
+        </form>
+        <section>
+            <ul>
+                <% todos.forEach(todo => { %>
+                    <% if (todo.important) { %>
+                        <li class="important">
+                            <% } else if (todo.done) { %>
+                                <li class="done">
+                                <% } else { %>
+                    <li>
+                        <% } %>
+                        <form method="POST" action="/<%=todo._id%>/priority?_method=PUT">
+                            <button type="submit"><i class="material-icons">access_alarm</i></button>
+                        </form>
+                        <form method="POST" action="/<%=todo._id%>?_method=DELETE">
+                            <button type="submit"><i class="material-icons">delete</i></button>
+                        </form>
+                        <p>
+                            <%=todo["todo"]%>
+                        </p>
+                        <form method="POST" action="/<%=todo._id%>/done?_method=PUT">
+                            <button type="submit"><i class="material-icons">done</i></button>
+                        </li>
+                    </form>
+                    <% }) %>
+            </ul>
+        </section>
+    </div>
+    <%- include('boilerplate/footer') %>
