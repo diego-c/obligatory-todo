@@ -1,5 +1,5 @@
 # Descripton
-A simple todo app built with express backend and mongo for persistence
+A simple todo app built with express backend and mongo for persistence. Inspired by Colt Steele's Web Developer Bootcamp course on Udemy.
 
 # Features
 * Authentication
