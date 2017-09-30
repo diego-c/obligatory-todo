@@ -2,7 +2,8 @@ const passport = require('passport'),
 express = require('express'),
 router = express.Router(),
 warez = require('../middleware/warez'),
-User = require('../db/models/users');
+User = require('../db/models/users'),
+xss = require('xss');
 
 // GET /login
 router.get("/login", warez.loginOnce, (req, res) => {
@@ -31,9 +32,24 @@ router.post(
 );
 // POST /register
 router.post("/register", (req, res) => {
+  let sanitizedUsername = xss(req.body.username.trim());
+  let sanitizedPassword = xss(req.body.password.trim());
+  let sanitizedEmail = xss(req.body.email.trim());
+
+  if (!sanitizedUsername || !sanitizedPassword || !sanitizedEmail)
+    {
+      return res.redirect('/register');
+    }
+  if (sanitizedPassword < 6)
+    {
+      return res.redirect('/register');
+    }
+  if (!/^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(sanitizedEmail)) {
+    return res.redirect('/register');
+  }
   User.register(
-    new User({ username: req.body.username, email: req.body.email }),
-    req.body.password,
+    new User({ username: sanitizedUsername, email: sanitizedEmail }),
+    sanitizedPassword,
     err => {
       if (err) {
         console.log(err);

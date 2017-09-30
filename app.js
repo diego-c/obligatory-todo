@@ -15,8 +15,23 @@ const express = require("express"),
   bodyParser = require("body-parser"),
   path = require("path"),
   env = require('dotenv').config(),
-  cookieParser = require("cookie-parser");
+  cookieParser = require("cookie-parser"),
+  helmet = require('helmet');
 
+// db connection
+let options = {
+  useMongoClient: true,
+  promiseLibrary: global.Promise
+};
+mongoose.Promise = global.Promise;
+mongoose.connect(process.env.CONNECT, options);
+
+// basic security
+app.use(helmet({
+    referrerPolicy: true
+  }));
+
+// cookies, session and passport boilerplate
 app.use(cookieParser());
 app.use(
   session({
@@ -30,10 +45,15 @@ app.use(passport.session());
 passport.use(new passportLocal(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
+
+// views
 app.set("view engine", "ejs");
 app.set("views", "./views");
 
+// css and js (frontend)
 app.use(express.static(path.join(__dirname, "public")));
+
+// populate req.body and get access to PUT and DELETE methods
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(override("_method"));
 
