@@ -1,4 +1,5 @@
 <%- include('boilerplate/header') %>
+<div class="wrapper">
     <h1>Register</h1>
     <form action="/register" method="POST">
         <div id="email">
@@ -15,7 +16,6 @@
         </div>
         <button type="submit">Register</button>
     </form>
-    <form action="/login">
-        <button type="submit">Login</button>
-    </form>
+    <a href="/login">Login</a>
+    </div>
     <%- include('boilerplate/footer') %>

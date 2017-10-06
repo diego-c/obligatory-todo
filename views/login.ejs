@@ -1,17 +1,17 @@
 <%- include('./boilerplate/header') %>
+<div class="wrapper">
     <h1>Login</h1>
     <form action="/login" method="POST">
         <div id="username">
             <label for="username">Username:</label>
-            <input type="text" maxlength="20" required name="username">
+            <input type="text" maxlength="20" required name="username" autofocus>
         </div>
         <div id="password">
             <label for="password">Password:</label>
             <input type="password" maxlength="80" minlength="6" required name="password">
         </div>
-        <button type="submit">Login</button>
+        <button type="submit">Sign in</button>
     </form>
-    <form action="/register">
-        <button type="submit">Register</button>
-    </form>
+    <a href="/register">Register</a>   
+</div>
     <%- include('./boilerplate/footer') %>
