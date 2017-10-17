@@ -50,13 +50,47 @@ form > button[type="submit"] {
     border-radius: 47px 47px 47px 47px;
     -moz-border-radius: 47px 47px 47px 47px;
     -webkit-border-radius: 47px 47px 47px 47px;
-    border: 1px solid #000000;
+    border: 1px solid #4197f4;
     outline: none;
     cursor: pointer;
     letter-spacing: .05rem;
     background: transparent;
     width: 50%;
 }
+
+/* Gradient button effect on hover */
+form > button[type="submit"]:hover {
+    color: white;
+    background: linear-gradient(270deg, #ff7b3f, #f3b660, #e3e826, #a2e25a, #4de6e4, #4dabe6, #eb74f9, #f24ba3);
+    background-size: 1600% 1600%;
+
+    -webkit-animation: AnimationName 6s linear forwards;
+    -moz-animation: AnimationName 6s linear forwards;
+    -o-animation: AnimationName 6s linear forwards;
+    animation: AnimationName 6s linear forwards;
+}
+
+@-webkit-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-moz-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@-o-keyframes AnimationName {
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+@keyframes AnimationName { 
+    0%{background-position:0% 50%}
+    50%{background-position:100% 50%}
+    100%{background-position:0% 50%}
+}
+
 .wrapper > a[href="/login"] {
     position: relative;
     top: 10vh;
